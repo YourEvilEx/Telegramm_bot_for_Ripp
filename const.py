@@ -1,4 +1,4 @@
-token = '589761676:AAFxCAQ1RQTFp-O07RiiAMOTIVBVbU3nUQM'
+token = 'TOKEN'
 last_name = ''
 first_name = ''
 ans_flag = ''
