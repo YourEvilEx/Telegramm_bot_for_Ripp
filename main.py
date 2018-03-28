@@ -54,12 +54,13 @@ def repeat_auth(message_au):
         log(message_au, const.ans_no_flag)
 
 
+'''
 @bot.message_handler(content_types=['text'])
 def repeat_all_message(message):
     answer = 'Я бы с удовольствием с тобой по общался, но не запрограммирован на это.\n' \
              'Пожалуйста пройди авторизацию, не делай мне больно.'
     bot.send_message(message.chat.id, answer)
     log(message, answer)
-
+'''
 
 bot.polling(none_stop=True, interval=0)
