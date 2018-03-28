@@ -1,0 +1,10 @@
+attrs
+pip
+pluggy
+py
+pyTelegramBotAPI
+pytest
+requests
+setuptools
+six
+wheel
