@@ -1,5 +1,5 @@
 token = '589761676:AAFxCAQ1RQTFp-O07RiiAMOTIVBVbU3nUQM'
 last_name = 'admin'
-first_name = 'k'
-ans_flag = 'flag'
-ans_noflag = 'no flag'
+first_name = 'admin'
+ans_flag = 'escctf{I congratulate you the son of my mother\'s friend}'
+ans_no_flag = 'Прости, но увы у тебя нет доступа, возвращайся как получишь его.'
