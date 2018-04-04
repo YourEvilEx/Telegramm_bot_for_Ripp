@@ -72,8 +72,8 @@ def repeat_auth(message_au):
     flag_to_const = False
 
     if const.first_name == message_au.from_user.first_name and const.last_name == message_au.from_user.last_name:
-        bot.send_message(message_au.chat.id, 'Вижу доступ у тебя есть, но на всякий случай парочка контрольных вапросов'
-                                             'Для продожлжения отправь \'+\'')
+        bot.send_message(message_au.chat.id, 'Вижу доступ у тебя есть, но на всякий случай парочка '
+                                             'контрольных вапросов. Для продожлжения отправь \'+\'')
         log_auth(message_au, 'Вижу доступ у тебя есть, но на всякий случай парочка контрольных вапросов.'
                              'Для продожлжения отправь \'+\'')
         flag_to_const = True
@@ -113,7 +113,7 @@ def repeat_all_message(message):
         log_answer(message, message.text, 'Дата твоего рождения <чч.мм.гггг>?', const.date_of_birth)
 
     if flag_to_const and flag_2 == 2:
-        bot.send_message(message.chat.id, 'Твоя любимая песня <группа песня>?')
+        bot.send_message(message.chat.id, 'Твоя любимая песня <группа - песня>?')
         log(message, 'Твоя любимая песня <группа песня>?')
         flag_2 = 1
 
@@ -126,7 +126,7 @@ def repeat_all_message(message):
 
     elif flag_to_const and flag_2 == 1 and message.text.lower() != const.true_song:
         bot.send_message(message.chat.id, 'Неа')
-        log_answer(message, message.text, 'Твоя любимая песня <группа песня>?', const.true_song)
+        log_answer(message, 'Неа', 'Твоя любимая песня <группа песня>?', const.true_song)
 
     if flag_to_const and flag_3 == 2:
         bot.send_message(message.chat.id, 'Дата регистрации в ВК <чч.мм.гггг>?')
@@ -142,7 +142,7 @@ def repeat_all_message(message):
 
     elif flag_to_const and flag_3 == 1 and message.text.lower() != const.date_of_registration:
         bot.send_message(message.chat.id, 'Неа')
-        log_answer(message, message.text, 'Дата регистрации в ВК <чч.мм.гггг>?', const.date_of_registration)
+        log_answer(message, 'Неа', 'Дата регистрации в ВК <чч.мм.гггг>?', const.date_of_registration)
 
     elif not flag_to_const:
         answer = 'Я бы с удовольствием с тобой по общался, но не запрограммирован на это.\n' \

@@ -2,7 +2,7 @@ token = '589761676:AAFxCAQ1RQTFp-O07RiiAMOTIVBVbU3nUQM'
 
 first_name = 'Морган'
 last_name = 'Ю'
-true_song = 'despot billions'
+true_song = 'despot - billions'
 date_of_birth = '01.01.1983'
 date_of_registration = '01.01.1337'
 
