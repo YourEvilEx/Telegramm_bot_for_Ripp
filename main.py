@@ -49,10 +49,18 @@ def log(message, answer):
 
 @bot.message_handler(commands=['start'])
 def repeat_start(message_st):
-        answer = 'Привет, я простой бот который умеет только одно, авторизировать пользователей. ' \
-                 'Пожалуйста пройди авторизацию.'
-        bot.send_message(message_st.chat.id, answer)
-        log(message_st, answer)
+    global flag_to_const
+    global flag_1
+    global flag_2
+    global flag_3
+    answer = 'Привет, я простой бот который умеет только одно, авторизировать пользователей. ' \
+             'Пожалуйста пройди авторизацию.'
+    bot.send_message(message_st.chat.id, answer)
+    log(message_st, answer)
+    flag_to_const = False
+    flag_1 = 0
+    flag_2 = 0
+    flag_3 = 0
 
 
 @bot.message_handler(commands=['help'])
@@ -68,7 +76,6 @@ def repeat_auth(message_au):
     global flag_1
     global flag_2
     global flag_3
-
     flag_to_const = False
 
     if const.first_name == message_au.from_user.first_name and const.last_name == message_au.from_user.last_name:
@@ -96,7 +103,10 @@ def repeat_all_message(message):
     global flag_2
     global flag_3
 
-    if flag_to_const and flag_1 == 2 and message.text.lower() == '+':
+    flag_2 = 0
+    flag_3 = 0
+
+    if flag_to_const and flag_1 == 2 and message.text == '+':
         bot.send_message(message.chat.id, 'Дата твоего рождения <чч.мм.гггг>?')
         log(message, 'Дата твоего рождения <чч.мм.гггг>?')
         flag_1 = 1
