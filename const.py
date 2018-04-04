@@ -1,5 +1,11 @@
 token = '589761676:AAFxCAQ1RQTFp-O07RiiAMOTIVBVbU3nUQM'
-last_name = 'admin'
-first_name = 'admin'
-ans_flag = 'escctf{I congratulate you the son of my mother\'s friend}'
+
+first_name = 'Морган'
+last_name = 'Ю'
+true_song = 'despot billions'
+date_of_birth = '01.01.1983'
+date_of_registration = '01.01.1337'
+
+
+ans_flag = 'escctf{I_congratulate_you_the_son_of_my_mother\'s_friend}'
 ans_no_flag = 'Прости, но увы у тебя нет доступа, возвращайся как получишь его.'
