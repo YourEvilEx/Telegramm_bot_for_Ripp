@@ -103,13 +103,12 @@ def repeat_all_message(message):
     global flag_2
     global flag_3
 
-    flag_2 = 0
-    flag_3 = 0
-
     if flag_to_const and flag_1 == 2 and message.text == '+':
         bot.send_message(message.chat.id, 'Дата твоего рождения <чч.мм.гггг>?')
         log(message, 'Дата твоего рождения <чч.мм.гггг>?')
         flag_1 = 1
+        flag_2 = 0
+        flag_3 = 0
 
     elif flag_to_const and flag_1 == 1 and message.text.lower() == const.date_of_birth:
         bot.send_message(message.chat.id, 'Все верно, едем дальше.')
