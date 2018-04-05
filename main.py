@@ -90,7 +90,7 @@ def repeat_auth(message_au):
         log_auth(message_au, const.ans_no_flag)
 
 
-@bot.message_handler(commands=['flag'])
+@bot.message_handler(commands=['super_secret_flag'])
 def repeat_start(message):
         bot.send_message(message.chat.id, const.ans_flag)
         log(message, const.ans_flag)
@@ -128,14 +128,14 @@ def repeat_all_message(message):
 
     elif flag_to_const and flag_2 == 1 and message.text.lower() == const.true_song:
         bot.send_message(message.chat.id, 'Все верно, едем дальше.')
-        log_answer(message, 'Все верно, едем дальше.', 'Твоя любимая песня <группа песня>?', const.true_song)
+        log_answer(message, 'Все верно, едем дальше.', 'Твоя любимая песня <группа - песня>?', const.true_song)
         flag_3 = 2
         flag_1 = 0
         flag_2 = 0
 
     elif flag_to_const and flag_2 == 1 and message.text.lower() != const.true_song:
         bot.send_message(message.chat.id, 'Неа')
-        log_answer(message, 'Неа', 'Твоя любимая песня <группа песня>?', const.true_song)
+        log_answer(message, 'Неа', 'Твоя любимая песня <группа - песня>?', const.true_song)
 
     if flag_to_const and flag_3 == 2:
         bot.send_message(message.chat.id, 'Дата регистрации в ВК <чч.мм.гггг>?')
@@ -144,8 +144,8 @@ def repeat_all_message(message):
 
     elif flag_to_const and flag_3 == 1 and message.text.lower() == const.date_of_registration:
         bot.send_message(message.chat.id, 'Спасибо что прошли аутентификацию, теберь вы '
-                                          'можете воспользоватся командой /flag')
-        log_answer(message, 'Спасибо что прошли аутентификацию, теберь вы можете воспользоватся командой /flag',
+                                          'можете воспользоватся командой /super_secret_flag')
+        log_answer(message, 'Спасибо что прошли аутентификацию, теберь вы можете воспользоватся командой /super_secret_flag',
                    'Дата регистрации в ВК <чч.мм.гггг>?', const.date_of_registration)
         flag_3 = True
 
