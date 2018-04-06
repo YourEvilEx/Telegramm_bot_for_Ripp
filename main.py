@@ -116,22 +116,22 @@ def repeat_all_message(message):
     global command_flag
 
     if flag_to_const and flag_1 == 2 and message.text == '+':
-        bot.send_message(message.chat.id, 'Дата твоего рождения <чч.мм.гггг>?')
-        log(message, 'Дата твоего рождения <чч.мм.гггг>?')
+        bot.send_message(message.chat.id, 'Дата твоего рождения <дд.мм.гггг>?')
+        log(message, 'Дата твоего рождения <дд.мм.гггг>?')
         flag_1 = 1
         flag_2 = 0
         flag_3 = 0
 
     elif flag_to_const and flag_1 == 1 and message.text.lower() == const.date_of_birth:
         bot.send_message(message.chat.id, 'Все верно, едем дальше.')
-        log_answer(message, 'Все верно, едем дальше.', 'Дата твоего рождения <чч.мм.гггг>?', const.date_of_birth)
+        log_answer(message, 'Все верно, едем дальше.', 'Дата твоего рождения <дд.мм.гггг>?', const.date_of_birth)
         flag_2 = 2
         flag_1 = 0
         flag_3 = 0
 
     elif flag_to_const and flag_1 == 1 and message.text.lower() != const.date_of_birth:
         bot.send_message(message.chat.id, 'Неа')
-        log_answer(message, message.text, 'Дата твоего рождения <чч.мм.гггг>?', const.date_of_birth)
+        log_answer(message, message.text, 'Дата твоего рождения <дд.мм.гггг>?', const.date_of_birth)
 
     if flag_to_const and flag_2 == 2:
         bot.send_message(message.chat.id, 'Твоя любимая песня <группа - песня>?')
@@ -150,20 +150,20 @@ def repeat_all_message(message):
         log_answer(message, 'Неа', 'Твоя любимая песня <группа - песня>?', const.true_song)
 
     if flag_to_const and flag_3 == 2:
-        bot.send_message(message.chat.id, 'Дата регистрации в ВК <чч.мм.гггг>?')
-        log(message, 'Дата регистрации в ВК <чч.мм.гггг>?')
+        bot.send_message(message.chat.id, 'Дата регистрации в ВК <дд.мм.гггг>?')
+        log(message, 'Дата регистрации в ВК <дд.мм.гггг>?')
         flag_3 = 1
 
     elif flag_to_const and flag_3 == 1 and message.text.lower() == const.date_of_registration:
         bot.send_message(message.chat.id, 'Спасибо что прошли аутентификацию, теперь вы '
                                           'можете воспользоваться командой /flag')
         log_answer(message, 'Спасибо, что прошли аутентификацию, теперь вы можете воспользоваться командой /flag',
-                   'Дата регистрации в ВК <чч.мм.гггг>?', const.date_of_registration)
+                   'Дата регистрации в ВК <дд.мм.гггг>?', const.date_of_registration)
         command_flag = True
 
     elif flag_to_const and flag_3 == 1 and message.text.lower() != const.date_of_registration:
         bot.send_message(message.chat.id, 'Неа')
-        log_answer(message, 'Неа', 'Дата регистрации в ВК <чч.мм.гггг>?', const.date_of_registration)
+        log_answer(message, 'Неа', 'Дата регистрации в ВК <дд.мм.гггг>?', const.date_of_registration)
 
     elif not flag_to_const:
         answer = 'Я бы с удовольствием с тобой пообщался, но не запрограммирован на это.\n' \
