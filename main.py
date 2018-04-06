@@ -4,6 +4,7 @@ import const
 bot = telebot.TeleBot(const.token)
 print(bot.get_me())
 
+command_flag = False
 flag_to_const = False
 flag_1 = 0
 flag_2 = 0
@@ -50,6 +51,7 @@ def log(message, answer):
 @bot.message_handler(commands=['start'])
 def repeat_start(message_st):
     global flag_to_const
+    global command_flag
     global flag_1
     global flag_2
     global flag_3
@@ -58,6 +60,7 @@ def repeat_start(message_st):
     bot.send_message(message_st.chat.id, answer)
     log(message_st, answer)
     flag_to_const = False
+    command_flag = False
     flag_1 = 0
     flag_2 = 0
     flag_3 = 0
@@ -73,16 +76,18 @@ def repeat_help(message_hl):
 @bot.message_handler(commands=['auth'])
 def repeat_auth(message_au):
     global flag_to_const
+    global command_flag
     global flag_1
     global flag_2
     global flag_3
+    command_flag = False
     flag_to_const = False
 
     if const.first_name == message_au.from_user.first_name and const.last_name == message_au.from_user.last_name:
         bot.send_message(message_au.chat.id, 'Вижу доступ у тебя есть, но на всякий случай парочка '
-                                             'контрольных вапросов. Для продожлжения отправь \'+\'')
-        log_auth(message_au, 'Вижу доступ у тебя есть, но на всякий случай парочка контрольных вапросов.'
-                             'Для продожлжения отправь \'+\'')
+                                             'контрольных вопросов. Для продолжения отправь \'+\'')
+        log_auth(message_au, 'Вижу доступ у тебя есть, но на всякий случай ответь на пару контрольных вопросов.'
+                             'Для продолжения отправь \'+\'')
         flag_to_const = True
         flag_1 = 2
     else:
@@ -90,10 +95,16 @@ def repeat_auth(message_au):
         log_auth(message_au, const.ans_no_flag)
 
 
-@bot.message_handler(commands=['super_secret_flag'])
+@bot.message_handler(commands=['flag'])
 def repeat_start(message):
-        bot.send_message(message.chat.id, const.ans_flag)
-        log(message, const.ans_flag)
+        global command_flag
+
+        if command_flag:
+            bot.send_message(message.chat.id, const.ans_flag)
+            log(message, const.ans_flag)
+        else:
+            bot.send_message(message.chat.id, 'Извините, у вас нет доступа к данной команде')
+            log(message, 'Извините, у вас нет доступа к данной команде')
 
 
 @bot.message_handler(content_types=['text'])
@@ -102,6 +113,7 @@ def repeat_all_message(message):
     global flag_1
     global flag_2
     global flag_3
+    global command_flag
 
     if flag_to_const and flag_1 == 2 and message.text == '+':
         bot.send_message(message.chat.id, 'Дата твоего рождения <чч.мм.гггг>?')
@@ -143,19 +155,19 @@ def repeat_all_message(message):
         flag_3 = 1
 
     elif flag_to_const and flag_3 == 1 and message.text.lower() == const.date_of_registration:
-        bot.send_message(message.chat.id, 'Спасибо что прошли аутентификацию, теберь вы '
-                                          'можете воспользоватся командой /super_secret_flag')
-        log_answer(message, 'Спасибо что прошли аутентификацию, теберь вы можете воспользоватся командой /super_secret_flag',
+        bot.send_message(message.chat.id, 'Спасибо что прошли аутентификацию, теперь вы '
+                                          'можете воспользоваться командой /flag')
+        log_answer(message, 'Спасибо, что прошли аутентификацию, теперь вы можете воспользоваться командой /flag',
                    'Дата регистрации в ВК <чч.мм.гггг>?', const.date_of_registration)
-        flag_3 = True
+        command_flag = True
 
     elif flag_to_const and flag_3 == 1 and message.text.lower() != const.date_of_registration:
         bot.send_message(message.chat.id, 'Неа')
         log_answer(message, 'Неа', 'Дата регистрации в ВК <чч.мм.гггг>?', const.date_of_registration)
 
     elif not flag_to_const:
-        answer = 'Я бы с удовольствием с тобой по общался, но не запрограммирован на это.\n' \
-             'Пожалуйста пройди авторизацию, не делай мне больно.'
+        answer = 'Я бы с удовольствием с тобой пообщался, но не запрограммирован на это.\n' \
+             'Пожалуйста, пройди авторизацию, не делай мне больно.'
         bot.send_message(message.chat.id, answer)
         log(message, answer)
 
